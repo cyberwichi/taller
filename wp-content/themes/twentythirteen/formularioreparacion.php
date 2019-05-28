@@ -25,8 +25,12 @@ if ($_POST){
 	$fecha = $_POST['fecha'];
 	$trabajos = $_POST['trabajos'];
 	
+ 	if ($fecha < 1){
+		$fecha= date("Y-m-d");
+	}
 
 	$sql= "INSERT INTO reparacion (matricula,fecha,trabajos) VALUES  ('".$matricula."','". $fecha."','". $trabajos."');";
+
 
 	$result=$GLOBALS['wpdb']->query($sql);
 	if ($result) {
@@ -50,25 +54,29 @@ if ($_POST){
 				<div class="container">			
 
 					<div class="row">
-						<div class="col-md-4 table-responsive">
+						<div class="col-md-4 text-center">
 						
 							<form action="<?php echo get_home_url();?>/reparaciones" method="post" enctype="multipart/form-data" >
-							<div class=" row"> 
-							<label for="matricula" class="col">Matricula</label>
-							<input class="col form-control"type="text" name="matricula" class="ml-auto" value="">
-							</div>								
+							
+							<label for="matricula" class="row form-text">Matricula</label>
+							<input class="row form-control"type="text" name="matricula" value="" required>
+							<small id="" class="form-text text-muted">
+							Introduzca la matricula del vehiculo 
+							</small>
+														
 							<br>
-							<div class="row"> 
-								<label for="fecha" class="col">fecha</label>
-								<input type="date" name="fecha" value="" class="form-control">					
-							</div>
-								<br>
-							<div class="row">
-								
-								<label for="trabajos" class="col">trabajos</label>
-								<textarea  name="trabajos" value="" col="50" row="50" class="col form-control">
-								</textarea>
-							</div>
+							<label for="fecha" class="row form-text">Fecha</label>
+							<input type="date" name="fecha" value="" class="form-control row text-center">
+							<small id="" class="form-text text-muted">
+							Introduzca la fecha de reparación del vehiculo si no introduce ninguna fecha se considerará la fecha actual 
+							</small>					
+							<br>
+							<label for="trabajos" class="row  form-text">Trabajos</label>
+							<textarea  name="trabajos" value="" rows="10" class="row form-control form-control-lg" required>
+							</textarea>
+							<small id="" class="form-text text-muted">
+							Introduzca la reparaciones efectuadas en el vehiculo 
+							</small>
 							<br>
 							<div class="row">
 								<input type="submit" name="submit" value="Enviar" class="col" >
@@ -116,8 +124,8 @@ if ($_POST){
 								<td><?php echo $reparaciones[$i]->fecha?></td>
 								<td><?php echo $reparaciones[$i]->trabajos?></td>								
 								<td>
-								<a href="<?php echo get_home_url();?>/editar-vehiculo?id=<?php echo $vehiculos[$i]->id?>">editar</a>
-								<a href="<?php echo get_home_url();?>/borrar-vehiculo?id=<?php echo $vehiculos[$i]->id?>">borrar</a>
+								<a href="<?php echo get_home_url();?>/editar-reparacion?id=<?php echo $reparaciones[$i]->id?>"><i class="far fa-edit text-info mr-3"></i></a>
+								<a href="<?php echo get_home_url();?>/borrar-reparacion?id=<?php echo $reparaciones[$i]->id?>"><i class="fas fa-ban text-danger"></i></a>
 								</td>
 							</tr>
 							<?php								

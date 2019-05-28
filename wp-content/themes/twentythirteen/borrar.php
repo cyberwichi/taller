@@ -3,7 +3,7 @@
  Template Name: BorrarVehiculo
  */
 get_header(); 
-echo "hola";
+
 global $wpdb;
 function redirect($url)
 {
@@ -27,38 +27,50 @@ $vehiculo=$wpdb->get_results($sql);
 
 
 ?>
-<div class="container">
+
+<div class="container col-5">
     <form action="<?php echo get_home_url();?>/borrar-vehiculo" method="post" enctype="multipart/form-data" >
-        <div class="justify-content-between"> 
-        <label for="id">Id</label>
-        <input class="align-self-end"type="text" name="id" class="ml-auto" value="<?php echo $vehiculo[0]->id;?>" readonly>
+        <div class="row"> 
+        <label for="id" class="col-6">Id</label>
+        <input class="align-self-end col-6"type="text" name="id" class="ml-auto" value="<?php echo $vehiculo[0]->id;?>" readonly>
         </div>
-        <div class="justify-content-between"> 
-        <label for="fabricante">Fabricante</label>
-        <input class="align-self-end"type="text" name="fabricante" class="ml-auto" value="<?php echo $vehiculo[0]->fabricante;?>">
+        <br>
+        <div class="row"> 
+        <label for="fabricante" class="col-6" >Fabricante</label>
+        <input class="align-self-end col-6" type="text" name="fabricante" class="ml-auto" value="<?php echo $vehiculo[0]->fabricante;?>">
         </div>								
         <br>
-        <div class="justify-content-between"> 
-        <label for="modelo">Modelo</label>
-        <input type="text" name="modelo" value="<?php echo $vehiculo[0]->modelo;?>">					
+        <div class="row"> 
+        <label for="modelo" class="col-6" >Modelo</label>
+        <input type="text" class="col-6" name="modelo" value="<?php echo $vehiculo[0]->modelo;?>">					
         </div>
         <br>
-        <label for="submodelo">Submodelo</label>
-        <input type="text" name="submodelo" value="<?php echo $vehiculo[0]->submodelo;?>">
+        <div class="row">
+        <label for="submodelo" class="col-6">Submodelo</label>
+        <input type="text" class="col-6" name="submodelo" value="<?php echo $vehiculo[0]->submodelo;?>">
+        </div>
         <br>
-        <label for="url_neumaticos">Url Neumaticos</label>
-        <input type="text" name="url_neumaticos" value="<?php echo $vehiculo[0]->url_neumaticos;?>">
+        <div class="row">
+        <label for="url_neumaticos" class="col-6" >Url Neumaticos</label>
+        <input type="text" class="col-6" name="url_neumaticos" value="<?php echo $vehiculo[0]->url_neumaticos;?>">
+        </div>
         <br>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="confirmacion" id="exampleRadios1" value="1" >
+        <div class="form-check row">
+            <input class="form-check-input" type="radio" name="confirmacion" id="exampleRadios1" value="1" required >
             <label class="form-check-label" for="exampleRadios1">
             CONFIRMACION DE BORRADO
             </label>
         </div>
-        <input type="submit" name="submit" value="Modificar">
+       
+        <div class="row">
+        <input  class="col-12" type="submit" name="submit" value="Borrar">
+        </div>
 
     </form>
-</div>
+
+
+
+
 <?php
 if ($_POST){
     $id=$_POST['id'];

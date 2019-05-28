@@ -55,24 +55,24 @@ if ($_POST){
 							<form action="<?php echo get_home_url();?>/formulario" method="post" enctype="multipart/form-data" >
 							<div class=" row"> 
 							<label for="fabricante" class="col">Fabricante</label>
-							<input class="col"type="text" name="fabricante" class="ml-auto" value="">
+							<input class="col"type="text" name="fabricante" class="ml-auto" value="" required>
 							</div>								
 							<br>
 							<div class="row"> 
 								<label for="modelo" class="col">Modelo</label>
-								<input type="text" name="modelo" value="">					
+								<input type="text" name="modelo" value="" required>					
 							</div>
 								<br>
 							<div class="row">
 								
 								<label for="submodelo" class="col">Submodelo</label>
-								<input type="text" name="submodelo" value="" class="col">
+								<input type="text" name="submodelo" value="" class="col" required>
 							</div>
 							<br>
 							<div class="row">
 								
 								<label for="url_neumaticos" class="col">Url Neumaticos</label>
-								<input type="text" name="url_neumaticos" value="" class="col">
+								<input type="text" name="url_neumaticos" value="" class="col" required>
 															
 							</div>
 							<br>
@@ -122,10 +122,10 @@ if ($_POST){
 								<td><?php echo $vehiculos[$i]->fabricante?></td>
 								<td><?php echo $vehiculos[$i]->modelo?></td>
 								<td><?php echo $vehiculos[$i]->submodelo?></td>
-								<td><?php echo $vehiculos[$i]->url_neumaticos?></td>
+								<td><a  style="text-decoration: none;" class="text-primary" href="http://<?php echo $vehiculos[$i]->url_neumaticos?>"><?php echo $vehiculos[$i]->url_neumaticos?></a></td>
 								<td>
-								<a href="<?php echo get_home_url();?>/editar-vehiculo?id=<?php echo $vehiculos[$i]->id?>">editar</a>
-								<a href="<?php echo get_home_url();?>/borrar-vehiculo?id=<?php echo $vehiculos[$i]->id?>">borrar</a>
+								<a href="<?php echo get_home_url();?>/editar-vehiculo?id=<?php echo $vehiculos[$i]->id?>"><i class="far fa-edit text-info mr-3"></i></a>
+								<a href="<?php echo get_home_url();?>/borrar-vehiculo?id=<?php echo $vehiculos[$i]->id?>"><i class="fas fa-ban text-danger"></i></a>
 								</td>
 							</tr>
 							<?php								

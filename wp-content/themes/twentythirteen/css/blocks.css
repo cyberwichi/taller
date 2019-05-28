@@ -18,6 +18,9 @@ Description: Used to style blocks.
 /*--------------------------------------------------------------
 1.0 Block Alignments
 --------------------------------------------------------------*/
+a {
+	
+}
 
 .content-area {
 	overflow-x: hidden; /* prevents side-scrolling caused by use of vw */

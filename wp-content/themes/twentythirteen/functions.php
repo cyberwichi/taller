@@ -295,7 +295,7 @@ function twentythirteen_scripts_styles() {
 	wp_enqueue_script( 'bootstrap-jquery-script', 'https://code.jquery.com/jquery-3.3.1.slim.min.js' );
 	wp_enqueue_script( 'bootstrap-pooper-script', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' );
 	wp_enqueue_script( 'bootstrap-script', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' );
-
+	wp_enqueue_script( 'fontawersome-script', 'https://use.fontawesome.com/releases/v5.8.2/js/all.js' );
 	
 }
 add_action( 'wp_enqueue_scripts', 'twentythirteen_scripts_styles' );
